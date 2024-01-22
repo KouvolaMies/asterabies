@@ -61,11 +61,12 @@ public class movement : MonoBehaviour
         if(collision.CompareTag("Asteroid") && health > 0){
             health--;
             hp.text = "HP: " + health;
+
+            GameManager gameManager = FindAnyObjectByType<GameManager>();
+            gameManager.hpnum -= 1;
         }
         if(health <= 0){
             GameManager gameManager = FindAnyObjectByType<GameManager>();
-
-            gameManager.hpnum -= 1;
 
             gameManager.GameOver();
 
