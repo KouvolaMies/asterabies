@@ -10,13 +10,16 @@ public class GameManager : MonoBehaviour
     public int asteroidcount = 0;
     public int scorenum = 0;
     public int hpnum = 3;
+    private int level = 0;
     [SerializeField] private TMP_Text score;
     [SerializeField] private TMP_Text hp;
     [SerializeField] private TMP_Text gameovertxt;
+    [SerializeField] private TMP_Text leveltxt;
     void Update()
     {
         if(asteroidcount == 0){
-            int asteroidnum = Random.Range(2, 5);
+            ++level;
+            int asteroidnum = Random.Range(1 * level, 4 * level);
             for(int i = 0; i < asteroidnum; i += 1){
                 SpawnAsteroid();
             }
@@ -24,6 +27,7 @@ public class GameManager : MonoBehaviour
 
         score.text = "Score: " + scorenum;
         hp.text = "HP: " + hpnum;
+        leveltxt.text = "Level: " + level;
     }
     void SpawnAsteroid(){
         float offset = Random.Range(0f, 1f);
