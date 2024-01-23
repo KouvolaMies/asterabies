@@ -6,7 +6,7 @@ using TMPro;
 public class movement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private float speed;
+    [SerializeField] float speed = 24f;
     public int health = 3;
     [SerializeField] private TMP_Text hp;
     [SerializeField] private Transform bulletspawn;
@@ -26,20 +26,18 @@ public class movement : MonoBehaviour
 
     void Movement(){
         if(Input.GetKey("w")){
-            speed = 12f;
+            speed = 24f;
             transform.position += transform.up * 0.001f * speed;
         }
-        else{
-            if(speed > 0f){
-                speed -= 0.02f;
-                transform.position += transform.up * 0.001f * speed;
-            }
+        else if(speed > 0f){
+            speed -= 0.05f;
+            transform.position += transform.up * 0.001f * speed;
         }
         if(Input.GetKey("d")){
-            transform.Rotate(0f, 0f, -0.7f, Space.Self);
+            transform.Rotate(0f, 0f, -0.8f, Space.Self);
         }
         if(Input.GetKey("a")){
-            transform.Rotate(0f, 0f, 0.7f, Space.Self);
+            transform.Rotate(0f, 0f, 0.8f, Space.Self);
         }
     }
 

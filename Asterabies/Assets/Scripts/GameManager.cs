@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public int hpnum = 3;
     [SerializeField] private TMP_Text score;
     [SerializeField] private TMP_Text hp;
+    [SerializeField] private TMP_Text gameovertxt;
     void Update()
     {
         if(asteroidcount == 0){
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void GameOver(){
+        gameovertxt.text = "GAME OVER";
         StartCoroutine(Restart());
     }
 
